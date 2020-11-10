@@ -19,8 +19,30 @@ window.addEventListener('load', function() {
 
   let divRoot = document.getElementById('root');
 
-  let difficult = document.createElement('select')
-  difficult.setAttribute('id', 'difficult')
+  let title = document.createElement('h1');
+  title.innerHTML = 'MEMORY GAME';
+  setStyle(title, {
+    backgroundColor:'#CCC',
+    width:'50%',
+    marginLeft:'25%',
+    marginTop:'10px',
+    marginBottom:'10px',
+    fontSize:'90px',
+    textAlign: 'center',
+  })
+
+  divRoot.appendChild(title);
+
+  let description = document.createElement('h3');
+  setStyle(description, {
+    textAlign: 'center',
+  })
+  description.innerHTML="SELECT DIFFICULT AND CLICK START!";
+  divRoot.appendChild(description);
+
+
+  let difficult = document.createElement('select');
+  difficult.setAttribute('id', 'difficult');
 
   let easy = document.createElement('option');
   easy.text = 'Easy';
@@ -33,10 +55,27 @@ window.addEventListener('load', function() {
   difficult.add(medium);
   difficult.add(hard);
 
+  setStyle(difficult, {
+    width:'10%',
+    height:'30px',
+    backgroundColor: '#CCC',
+    marginBottom: '20px',
+    marginLeft: '35%',
+    marginTop:'10px',
+  })
+
   divRoot.appendChild(difficult);
 
   let start = document.createElement('button');
   start.innerHTML = "START";
+  setStyle(start, {
+    width:'10%',
+    height:'30px',
+    backgroundColor: '#CCC',
+    marginLeft: '150px',
+    marginBottom: '20px',
+    marginTop:'10px',
+  })
   divRoot.appendChild(start);
 
   let board = document.createElement('div')
