@@ -3,12 +3,12 @@ import {setStyle} from './createStyle';
 
 let Tile = function(id){
   this.id = id;
-  let tile;
+  this.tile = null;
 
   let init = (function(){
-    tile = document.createElement('div');
-    tile.setAttribute('id', id);
-    setStyle(tile, {
+    this.tile = document.createElement('div');
+    this.tile.setAttribute('id', id);
+    setStyle(this.tile, {
       backgroundRepeat: 'no-repeat',
       border:'black 1px solid',
       width:'71px',
@@ -24,12 +24,14 @@ let Tile = function(id){
   }).bind(this);
 
   this.attach = function(parentElement){
-    parentElement.appendChild(tile);
+    parentElement.appendChild(this.tile);
   }
 
   this.handleEvent = (eventType, callback) => {
-    tile.addEventListener(eventType, callback);
+    this.tile.addEventListener(eventType, callback);
   };
+
+  this.getDomElement = () => this.tile;
 
   init();
 

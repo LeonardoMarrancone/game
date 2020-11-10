@@ -3,21 +3,27 @@
 import {Tile} from './tile';
 
 let TileManager = function(context, memory){
+
   let memory_values = [];
   let memory_tile_ids = [];
   let tiles_flipped = 0;
 
   this.createBoard = () => {
-    let i=0;
-    while(i < memory.length){
-     let t = new Tile(i);
-     t.handleEvent('Click', () => memoryFlipTile(t, memory[i]));
+    let i = 0;
+    while (i < memory.length) {
+      let t = new Tile(i);
+      let val = memory[i];
+      t.handleEvent('click', () => {
+        console.log(t, val)
+        this.memoryFlipTile(t, val)
+      })
       t.attach(context);
       i++;
     }
   }
 
-  function memoryFlipTile(tile,val) {
+   this.memoryFlipTile = (t,val) => {
+    const tile = t.getDomElement();
     if (tile.innerHTML === "" && memory_values.length < 2) {
       tile.style.background = '#FFF';
       tile.innerHTML = val;
@@ -37,7 +43,7 @@ let TileManager = function(context, memory){
             alert("Board cleared... generating new board");
           }
         } else {
-          function flip2Back() {
+          const flip2Back = () => {
             // Flip the 2 tiles back over
             let tile_1 = document.getElementById(memory_tile_ids[0]);
             let tile_2 = document.getElementById(memory_tile_ids[1]);
