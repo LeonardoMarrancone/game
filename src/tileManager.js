@@ -40,7 +40,7 @@ let TileManager = function(context, memory){
           memory_tile_ids = [];
           // Check to see if the whole board is cleared
           if (tiles_flipped === memory.length) {
-            alert("Board cleared... generating new board");
+            alert("YOU WIN!!!! generating new board");
           }
         } else {
           const flip2Back = () => {
