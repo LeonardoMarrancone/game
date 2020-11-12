@@ -1,6 +1,7 @@
 "use strict";
 
 import {Tile} from './tile';
+import {setStyle} from './createStyle';
 
 let TileManager = function(context, memory){
 
@@ -47,9 +48,9 @@ let TileManager = function(context, memory){
             // Flip the 2 tiles back over
             let tile_1 = document.getElementById(memory_tile_ids[0]);
             let tile_2 = document.getElementById(memory_tile_ids[1]);
-            tile_1.style.background = '#CCC';
+            setStyle(tile_1, {background: '#CCC'});
             tile_1.innerHTML = "";
-            tile_2.style.background = '#CCC';
+            setStyle(tile_2, {background: '#CCC'});
             tile_2.innerHTML = "";
             // Clear both arrays
             memory_values = [];
